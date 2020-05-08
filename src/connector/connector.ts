@@ -1,5 +1,11 @@
 import { Channel, PresenceChannel } from './../channel';
 
+declare global {
+    interface Window {
+        csrfToken: any
+    }
+}
+
 export abstract class Connector {
     /**
      * Default connector options.
@@ -45,11 +51,11 @@ export abstract class Connector {
     /**
      * Extract the CSRF token from the page.
      */
-    protected csrfToken(): string {
+    protected csrfToken(): string | null {
         let selector;
 
-        if (typeof window !== 'undefined' && window['Laravel'] && window['Laravel'].csrfToken) {
-            return window['Laravel'].csrfToken;
+        if (typeof window !== 'undefined' && window[<any>'Laravel'] && window[<any>'Laravel'].csrfToken) {
+            return window[<any>'Laravel'].csrfToken;
         } else if (this.options.csrfToken) {
             return this.options.csrfToken;
         } else if (

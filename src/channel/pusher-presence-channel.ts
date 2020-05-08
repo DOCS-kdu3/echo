@@ -9,7 +9,7 @@ export class PusherPresenceChannel extends PusherChannel implements PresenceChan
      * Register a callback to be called anytime the member list changes.
      */
     here(callback: Function): PusherPresenceChannel {
-        this.on('pusher:subscription_succeeded', (data) => {
+        this.on('pusher:subscription_succeeded', (data : any) => {
             callback(Object.keys(data.members).map((k) => data.members[k]));
         });
 
@@ -20,7 +20,7 @@ export class PusherPresenceChannel extends PusherChannel implements PresenceChan
      * Listen for someone joining the channel.
      */
     joining(callback: Function): PusherPresenceChannel {
-        this.on('pusher:member_added', (member) => {
+        this.on('pusher:member_added', (member : any) => {
             callback(member.info);
         });
 
@@ -31,7 +31,7 @@ export class PusherPresenceChannel extends PusherChannel implements PresenceChan
      * Listen for someone leaving the channel.
      */
     leaving(callback: Function): PusherPresenceChannel {
-        this.on('pusher:member_removed', (member) => {
+        this.on('pusher:member_removed', (member : any) => {
             callback(member.info);
         });
 

@@ -5,7 +5,7 @@ export class EventFormatter {
     /**
      * Event namespace.
      */
-    namespace: string | boolean;
+    namespace!: string | boolean;
 
     /**
      * Create a new class instance.

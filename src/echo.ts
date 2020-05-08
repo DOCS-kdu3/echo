@@ -127,7 +127,7 @@ export default class Echo {
      * Register a Vue HTTP interceptor to add the X-Socket-ID header.
      */
     registerVueRequestInterceptor(): void {
-        Vue.http.interceptors.push((request, next) => {
+        Vue.http.interceptors.push((request : any, next : any) => {
             if (this.socketId()) {
                 request.headers.set('X-Socket-ID', this.socketId());
             }
@@ -140,7 +140,7 @@ export default class Echo {
      * Register an Axios HTTP interceptor to add the X-Socket-ID header.
      */
     registerAxiosRequestInterceptor(): any {
-        axios.interceptors.request.use((config) => {
+        axios.interceptors.request.use((config : any) => {
             if (this.socketId()) {
                 config.headers['X-Socket-Id'] = this.socketId();
             }
@@ -154,7 +154,7 @@ export default class Echo {
      */
     registerjQueryAjaxSetup(): void {
         if (typeof jQuery.ajax != 'undefined') {
-            jQuery.ajaxPrefilter((options, originalOptions, xhr) => {
+            jQuery.ajaxPrefilter((options : any, originalOptions : any, xhr : any) => {
                 if (this.socketId()) {
                     xhr.setRequestHeader('X-Socket-Id', this.socketId());
                 }

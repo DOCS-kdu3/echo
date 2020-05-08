@@ -3,8 +3,11 @@
         "declaration": true,
         "module": "es6",
         "moduleResolution": "node",
+        "noImplicitAny": true,
         "outDir": "./dist",
         "sourceMap": false,
+        "strictPropertyInitialization": true,
+        "strictNullChecks": true,
         "target": "es6",
         "isolatedModules": false,
         "typeRoots": [
