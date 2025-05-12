@@ -46,4 +46,13 @@ export class PusherPresenceChannel extends PusherChannel implements PresenceChan
 
         return this;
     }
+
+    /**
+     * Listen for an event on the channel instance.
+     */
+    listen(event: string, callback: Function): PusherPresenceChannel {
+        this.on(this.eventFormatter.format(event), callback);
+
+        return this;
+    }
 }
